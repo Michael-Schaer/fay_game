@@ -1,12 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using DigitalRubyShared;
+﻿using DigitalRubyShared;
 using UnityEngine;
 
-public static class Extensions
+namespace Fay
 {
-    public static Vector2 TouchPosition(this GestureRecognizer gesture)
+    public static class Extensions
     {
-        return new Vector2(gesture.FocusX, gesture.FocusY);
+        public static Vector2 TouchPosition(this GestureRecognizer gesture)
+        {
+            return new Vector2(gesture.FocusX, gesture.FocusY);
+        }
     }
 }

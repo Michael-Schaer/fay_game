@@ -1,13 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public abstract class BaseMemoryElement : MonoBehaviour
+namespace Fay
 {
-    public abstract void Initialize();
-
-    internal void Finish()
+    public abstract class BaseMemoryElement : MonoBehaviour
     {
-        MemoryManager.Instance.Next();
+        public abstract void Initialize();
+
+        internal void Finish()
+        {
+            MemoryManager.Instance.Next();
+        }
     }
 }

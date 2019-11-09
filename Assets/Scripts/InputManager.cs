@@ -1,29 +1,32 @@
 ﻿using DigitalRubyShared;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+namespace Fay
 {
-    GestureRecognizer tapGesture;
-
-    void Start()
+    public class InputManager : MonoBehaviour
     {
-        CreateTapGesture();
-    }
+        GestureRecognizer tapGesture;
 
-    void CreateTapGesture()
-    {
-        tapGesture = new TapGestureRecognizer();
-        tapGesture.StateUpdated += OnTap;
-        FingersScript.Instance.AddGesture(tapGesture);
-    }
-
-    void OnTap(GestureRecognizer gesture)
-    {
-        if (gesture.State == GestureRecognizerState.Ended)
+        void Start()
         {
-           Debug.Log(Camera.main.ScreenToViewportPoint(gesture.TouchPosition()));
+            CreateTapGesture();
+        }
+
+        void CreateTapGesture()
+        {
+            tapGesture = new TapGestureRecognizer();
+            tapGesture.StateUpdated += OnTap;
+            FingersScript.Instance.AddGesture(tapGesture);
+        }
+
+        void OnTap(GestureRecognizer gesture)
+        {
+            if (gesture.State == GestureRecognizerState.Ended)
+            {
+                Debug.Log(Camera.main.ScreenToViewportPoint(gesture.TouchPosition()));
             
            
+            }
         }
     }
 }

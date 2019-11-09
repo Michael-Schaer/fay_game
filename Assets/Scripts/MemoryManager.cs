@@ -3,39 +3,42 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class MemoryManager : MonoBehaviour
+namespace Fay
 {
-    [SerializeField] List<UnityEvent> sequence;
-    [SerializeField] string nextSceneName;
+    public class MemoryManager : MonoBehaviour
+    {
+        [SerializeField] List<UnityEvent> sequence;
+        [SerializeField] string nextSceneName;
 
-    int index;
+        int index;
     
-    public static MemoryManager Instance { get; private set; }
+        public static MemoryManager Instance { get; private set; }
 
-    void Awake()
-    {
-        if (Instance)
+        void Awake()
         {
-            Destroy(gameObject);
-            return;
+            if (Instance)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
         }
 
-        Instance = this;
-    }
-
-    public void Next()
-    {
-        if (index >= sequence.Count)
+        public void Next()
         {
-            NextScene();
-            return;
+            if (index >= sequence.Count)
+            {
+                NextScene();
+                return;
+            }
+
+            sequence[index++].Invoke();
         }
 
-        sequence[index++].Invoke();
-    }
-
-    void NextScene()
-    {
-        SceneManager.LoadScene(nextSceneName);
+        void NextScene()
+        {
+            SceneManager.LoadScene(nextSceneName);
+        }
     }
 }

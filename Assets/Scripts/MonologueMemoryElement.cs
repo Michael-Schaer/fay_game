@@ -2,28 +2,31 @@
 using TMPro;
 using UnityEngine;
 
-public class MonologueMemoryElement : BaseMemoryElement
+namespace Fay
 {
-    [SerializeField] List<string> sequence;
-    [SerializeField] TextMeshProUGUI textField;
-    
-    int index;
-    
-    public void Next()
+    public class MonologueMemoryElement : BaseMemoryElement
     {
-        if (index >= sequence.Count)
+        [SerializeField] List<string> sequence;
+        [SerializeField] TextMeshProUGUI textField;
+    
+        int index;
+    
+        public void Next()
         {
-            Finish();
-            return;
+            if (index >= sequence.Count)
+            {
+                Finish();
+                return;
+            }
+
+            textField.text = sequence[index++];
         }
-
-        textField.text = sequence[index++];
-    }
     
-    public override void Initialize()
-    {
-        // show bubble
+        public override void Initialize()
+        {
+            // show bubble
 
-        Next();
+            Next();
+        }
     }
 }
