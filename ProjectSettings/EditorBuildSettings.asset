@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Scenes/TestMemory.unity
     guid: ee100c93c1dc8438ab866e85c9027dc1
+  - enabled: 1
+    path: Assets/_Scenes/Outro.unity
+    guid: 92b3171a4328f4d45879bc1dbac90b5b
   m_configObjects: {}

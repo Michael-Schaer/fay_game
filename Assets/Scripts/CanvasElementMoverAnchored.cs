@@ -7,7 +7,7 @@ public class CanvasElementMoverAnchored : MonoBehaviour
     [SerializeField] float defaultSpeed = 1;
     private RectTransform rectTransform;
 
-    private void Start()
+    private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
     }
