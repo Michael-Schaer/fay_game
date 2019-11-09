@@ -7,7 +7,7 @@ namespace Fay.Camping
 {
     public class PolishManager : MonoBehaviour
     {
-        [SerializeField] Image ring1, ring2, starts, tool;
+        [SerializeField] Image ring1, ring2, stars;
         [SerializeField] Button button1, button2, button3;
 
         private int imageCounter = 0;
@@ -21,36 +21,23 @@ namespace Fay.Camping
 
         public void SwitchImage()
         {
-           /* if (imageCounter == 0)
+            if (imageCounter == 0)
             {
-                laser.enabled = true;
+                ring1.enabled = false;
+                ring2.enabled = true;
+                button1.gameObject.SetActive(false);
+                button2.enabled = true;
             }
             else if (imageCounter == 1)
             {
-                laser.enabled = false;
-                stone_1.enabled = false;
-                stone_2.enabled = true;
-                button1.gameObject.SetActive(false);
-                button2.gameObject.SetActive(true);
-            }
-            else if (imageCounter == 2)
-            {
-                position_neutral.enabled = false;
-                position_cut.enabled = true;
+                stars.enabled = true;
                 button2.gameObject.SetActive(false);
                 button3.gameObject.SetActive(true);
-            }
-            else if (imageCounter == 3)
-            {
-                position_cut.enabled = false;
-                position_hammeron.enabled = true;
-                button3.gameObject.SetActive(false);
-                button1.gameObject.SetActive(true);
             }
             else
             {
                 Finish();
-            }*/
+            }
             imageCounter++;
 
         }
