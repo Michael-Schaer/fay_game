@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneBlender : MonoBehaviour
 {
     [SerializeField] private CanvasGroup canvasGroup;
-    [SerializeField] private float durationSec = 2;
+    [SerializeField] private float durationSec = 1.2f;
     [SerializeField] private string nextSceneName = "";
     private float alpha = 1;
     private bool blendOut = false;
