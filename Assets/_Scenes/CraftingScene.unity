@@ -640,7 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sequence:
-  - And how about a Diamond?
+  - Hey kids, want to learn how to get a diamond?
   textField: {fileID: 447002045}
   bubbleAnimator: {fileID: 199580443}
 --- !u!1 &229633988
@@ -5127,7 +5127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sequence:
-  - We needed help to fix the tent right?
+  - Make it smooth and shiny!
   textField: {fileID: 604575095}
   bubbleAnimator: {fileID: 2144970027}
 --- !u!1001 &368197590666343638
