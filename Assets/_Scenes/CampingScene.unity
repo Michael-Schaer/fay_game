@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 356350027}
   - component: {fileID: 356350028}
   - component: {fileID: 356350029}
+  - component: {fileID: 356350030}
   m_Layer: 5
   m_Name: Camping1_Monologue
   m_TagString: Untagged
@@ -259,8 +260,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -56.9}
-  m_SizeDelta: {x: 726, y: 113.8}
+  m_AnchoredPosition: {x: 0, y: -85}
+  m_SizeDelta: {x: 671.4, y: 113.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &356350028
 MonoBehaviour:
@@ -278,6 +279,7 @@ MonoBehaviour:
   - Hey you. Welcome to my Camping Memory.
   - Do you remember when we were rowing the boat?
   textField: {fileID: 1633801543}
+  bubbleAnimator: {fileID: 356350030}
 --- !u!114 &356350029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,6 +334,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!95 &356350030
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356350026}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9d172402b432d46daaf620cf9707fbaa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &686827050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,8 +1131,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1219,7 +1240,7 @@ PrefabInstance:
     - target: {fileID: 368197591205452059, guid: 05f8c8f5270684ea0b4bfee9a2036a8c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 368197591205452059, guid: 05f8c8f5270684ea0b4bfee9a2036a8c,
         type: 3}
@@ -1260,6 +1281,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 368197591205452058, guid: 05f8c8f5270684ea0b4bfee9a2036a8c,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 368197591205452058, guid: 05f8c8f5270684ea0b4bfee9a2036a8c,
+        type: 3}
+      propertyPath: far clip plane
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 368197591205452058, guid: 05f8c8f5270684ea0b4bfee9a2036a8c,
+        type: 3}
+      propertyPath: field of view
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 368197591205452058, guid: 05f8c8f5270684ea0b4bfee9a2036a8c,
+        type: 3}
+      propertyPath: orthographic size
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05f8c8f5270684ea0b4bfee9a2036a8c, type: 3}

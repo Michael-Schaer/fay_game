@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,7 +9,8 @@ namespace Fay
     {
         [SerializeField] List<string> sequence;
         [SerializeField] TextMeshProUGUI textField;
-    
+        [SerializeField] Animator bubbleAnimator;
+        
         int index;
     
         public void Next()
@@ -19,19 +21,27 @@ namespace Fay
                 return;
             }
 
-            textField.text = sequence[index++];
+            if(index > 0) bubbleAnimator.SetTrigger("Wiggle");
+            StartCoroutine(WaitAndShowText(1));
         }
     
         public override void Initialize()
         {
             gameObject.SetActive(true);
-
+            bubbleAnimator.SetTrigger("Show");
+            
             Next();
+        }
+
+        IEnumerator WaitAndShowText(float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            textField.text = sequence[index++];
         }
 
         internal override void Finish()
         {
-            gameObject.SetActive(false);
+            // gameObject.SetActive(false);
             
             base.Finish();
         }
