@@ -1,10 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class CanvasElementMover : MonoBehaviour
+[RequireComponent(typeof(RectTransform))]
+public class CanvasElementMoverAnchored : MonoBehaviour
 {
     [SerializeField] float defaultSpeed = 1;
+    private RectTransform rectTransform;
 
+    private void Start()
+    {
+        rectTransform = GetComponent<RectTransform>();
+    }
     public void MoveToPosition(Vector2 target)
     {
         MoveToPosition(target, defaultSpeed);
@@ -12,7 +18,7 @@ public class CanvasElementMover : MonoBehaviour
 
     void MoveToPosition(Vector2 target, float speed)
     {
-        StartCoroutine(Move(transform.position, target, speed));
+        StartCoroutine(Move(rectTransform.anchoredPosition, target, speed));
     }
 
     IEnumerator Move(Vector2 origin, Vector2 target, float speed)
@@ -22,8 +28,8 @@ public class CanvasElementMover : MonoBehaviour
         while (t < 1)
         {
             Vector2 position = Vector2.Lerp(origin, target, t);
-            transform.position = position;
-            
+            rectTransform.anchoredPosition = position;
+
             t = Mathf.Clamp01(t + Time.deltaTime * speed);
             yield return null;
         }
@@ -36,7 +42,7 @@ public class CanvasElementMover : MonoBehaviour
 
     void MoveUp(float pixels, float speed)
     {
-        var target = transform.position;
+        var target = rectTransform.anchoredPosition;
         target.y += pixels;
         MoveToPosition(target, speed);
     }
@@ -48,7 +54,7 @@ public class CanvasElementMover : MonoBehaviour
 
     void MoveRight(float pixels, float speed)
     {
-        var target = transform.position;
+        var target = rectTransform.anchoredPosition;
         target.x += pixels;
         MoveToPosition(target, speed);
     }
@@ -60,7 +66,7 @@ public class CanvasElementMover : MonoBehaviour
 
     void MoveUpRight(float pixelsRight, float pixelsUp, float speed)
     {
-        var target = transform.position;
+        var target = rectTransform.anchoredPosition;
         target.x += pixelsRight;
         target.y += pixelsUp;
         MoveToPosition(target, speed);
