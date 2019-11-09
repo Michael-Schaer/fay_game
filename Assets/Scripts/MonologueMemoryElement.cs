@@ -12,7 +12,9 @@ namespace Fay
         [SerializeField] Animator bubbleAnimator;
         
         int index;
-    
+
+        bool canMoveOn = true;
+        
         public void Next()
         {
             if (index >= sequence.Count)
@@ -21,8 +23,12 @@ namespace Fay
                 return;
             }
 
-            if(index > 0) bubbleAnimator.SetTrigger("Wiggle");
-            StartCoroutine(WaitAndShowText(1));
+            if (canMoveOn)
+            {
+                canMoveOn = false;
+                if(index > 0) bubbleAnimator.SetTrigger("Wiggle");
+                StartCoroutine(WaitAndShowText(1));
+            }
         }
     
         public override void Initialize()
@@ -37,6 +43,7 @@ namespace Fay
         {
             yield return new WaitForSeconds(seconds);
             textField.text = sequence[index++];
+            canMoveOn = true;
         }
 
         internal override void Finish()
