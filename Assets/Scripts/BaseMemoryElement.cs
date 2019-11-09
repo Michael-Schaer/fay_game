@@ -6,7 +6,7 @@ namespace Fay
     {
         public abstract void Initialize();
 
-        internal void Finish()
+        internal virtual void Finish()
         {
             MemoryManager.Instance.Next();
         }

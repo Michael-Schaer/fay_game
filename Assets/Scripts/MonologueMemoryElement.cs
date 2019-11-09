@@ -24,9 +24,16 @@ namespace Fay
     
         public override void Initialize()
         {
-            // show bubble
+            gameObject.SetActive(true);
 
             Next();
+        }
+
+        internal override void Finish()
+        {
+            gameObject.SetActive(false);
+            
+            base.Finish();
         }
     }
 }
