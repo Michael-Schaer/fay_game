@@ -11,6 +11,7 @@ namespace Fay.Camping
         [SerializeField] Image peopleImage;
         [SerializeField] List<Sprite> starImages;
         [SerializeField] Sprite pointingPeople;
+        [SerializeField] AudioClip starBling;
         
         int currentConnection;
         
@@ -35,6 +36,12 @@ namespace Fay.Camping
 
         void AddOneConnection()
         {
+            var audioGO = new GameObject();
+            var audioSrc = audioGO.AddComponent<AudioSource>();
+            audioSrc.clip = starBling;
+            audioSrc.Play();
+            Destroy(audioGO, 3);
+            
             starImage.sprite = starImages[currentConnection];
             currentConnection++;
             
