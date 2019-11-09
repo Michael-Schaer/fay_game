@@ -11,6 +11,7 @@ namespace Fay.Camping
         [SerializeField] float cycleLength = 5;
         [SerializeField] int cycleCount = 5;
         [SerializeField] Button rowingButton;
+        [SerializeField] AudioClip waterSplash;
 
         int currentCycle;
 
@@ -25,6 +26,12 @@ namespace Fay.Camping
 
             if (currentCycle % 2 == 0)
             {
+                var audioGO = new GameObject();
+                var audioSrc = audioGO.AddComponent<AudioSource>();
+                audioSrc.clip = waterSplash;
+                audioSrc.Play();
+                Destroy(audioGO, 3);
+                
                 boat.transform.position += offset;
                 rowingButton.transform.position += offset;
                 boat.sprite = move;
