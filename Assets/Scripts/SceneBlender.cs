@@ -37,6 +37,6 @@ public class SceneBlender : MonoBehaviour
     {
         alpha = 0;
         canvasGroup.alpha = alpha;
-        SceneManager.LoadScene("nextScene");
+        SceneManager.LoadScene(nextSceneName);
     }
 }
