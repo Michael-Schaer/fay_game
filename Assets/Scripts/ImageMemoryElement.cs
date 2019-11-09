@@ -1,17 +1,35 @@
-﻿using Fay;
+﻿using Core.Events;
 using UnityEngine;
 
-public class ImageMemoryElement : BaseMemoryElement
+namespace Fay
 {
-    Animator animator;
-
-    void Awake()
+    public class ImageMemoryElement : BaseMemoryElement
     {
-        animator = GetComponent<Animator>();
-    }
+        Animator animator;
 
-    public override void Initialize()
-    {
-        animator.SetTrigger("SHOW_NEXT");
+        void Awake()
+        {
+            animator = GetComponent<Animator>();
+        }
+
+        public override void Initialize()
+        {
+            ShowImage();
+        }
+
+        public void ShowImage()
+        {
+            animator.SetTrigger("Show");
+        }
+
+        public void HideImage()
+        {
+            animator.SetTrigger("Hide");
+        }
+
+        public void OnImageHidden()
+        {
+            MemoryManager.Instance.Next();
+        }
     }
 }

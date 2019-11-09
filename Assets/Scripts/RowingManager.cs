@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 namespace Fay.Camping
 {
-    public class Rowing : MonoBehaviour
+    public class RowingManager : MonoBehaviour
     {
         [SerializeField] Image boat;
-        [SerializeField] Sprite front;
-        [SerializeField] Sprite back;
+        [SerializeField] Sprite move;
+        [SerializeField] Sprite wait;
         [SerializeField] float cycleLength = 5;
         [SerializeField] int cycleCount = 5;
         [SerializeField] Button rowingButton;
@@ -22,11 +22,18 @@ namespace Fay.Camping
         public void RowOneCycle()
         {
             var offset = Vector3.right * cycleLength;
-            
-            boat.transform.position += offset;
-            rowingButton.transform.position += offset;
 
-            boat.sprite = currentCycle % 2 == 0 ? front : back;
+            if (currentCycle % 2 == 0)
+            {
+                boat.transform.position += offset;
+                rowingButton.transform.position += offset;
+                boat.sprite = move;
+            }
+            else
+            {
+                boat.sprite = wait;
+            }
+            
             
             currentCycle++;
 
