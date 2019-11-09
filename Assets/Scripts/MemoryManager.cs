@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -23,6 +24,11 @@ namespace Fay
             }
 
             Instance = this;
+        }
+
+        void Start()
+        {
+            Next();
         }
 
         public void Next()
