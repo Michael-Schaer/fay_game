@@ -16,6 +16,9 @@ public class TentManager : MonoBehaviour
 
     bool isMovable;
 
+    private Vector2 touchPosition;
+    private bool mouseDown = false;
+
     public void Initialize()
     {
         var rect = tent.rectTransform.rect;
@@ -28,24 +31,44 @@ public class TentManager : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetMouseButtonDown(0))
+        {
+            mouseDown = true;
+        }
+        if(Input.GetMouseButtonUp(0))
+        {
+            mouseDown = false;
+        }
+
         if (isMovable)
         {
             if (Input.touchCount > 0)
             {
                 var touch = Input.GetTouch(0);
-                var position = corner.position;
-                var offset = new Vector2(position.x, position.y) - touch.position;
-
-                tent.rectTransform.sizeDelta = offset;
-
-                if (HitsTargetPanel(touch.position))
-                {
-                    isMovable = false;
-                    Stick();
-                }
+                touchPosition = touch.position;
+                AdjustTent();
 
             }
+            else if(mouseDown)
+            {
+                touchPosition = Input.mousePosition;
+                AdjustTent();
+            }
             else ResetTent();
+        }
+    }
+
+    private void AdjustTent()
+    {
+        var position = corner.position;
+        var offset = new Vector2(position.x, position.y) - touchPosition;
+
+        tent.rectTransform.sizeDelta = offset;
+
+        if (HitsTargetPanel(touchPosition))
+        {
+            isMovable = false;
+            Stick();
         }
     }
 
